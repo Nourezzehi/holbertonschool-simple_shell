@@ -7,7 +7,7 @@
  * Return: 0
 */
 
-int main(int argc, char **argv)
+int main(int __attribute__ ((unused)) argc, __attribute__ ((unused)) char **argv)
 {
 	unsigned int count = 1;
 	char *readline = NULL, **tokens;
