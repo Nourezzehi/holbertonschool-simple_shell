@@ -1,19 +1,18 @@
 #include "simple_shell.h"
 
 /**
- *execute_the_line - the function to use execve while executing the line
- *@tokens: the vector with the whole input
+ * execute_line - the function to use execve while executing the line
+ * @tokens: the vector with the whole input
  */
 
-int execute_line(char **tokens)
+void execute_line(char **tokens)
 {
-    pid_t pid;
-    int status;
-	
+	pid_t pid;
+
 	pid = fork();
 	if (pid == 0)
 	{
-		if (status = execvp(tokens[0], tokens) == -1)
+		if (execvp(tokens[0], tokens) == -1)
 		{
 			fprintf(stdin, "%s: command not found", tokens[0]);
 			exit(EXIT_FAILURE);
@@ -23,5 +22,4 @@ int execute_line(char **tokens)
 		waitpid(pid, NULL, 0);
 	else
 		perror("fork");
-    return (status);
 }

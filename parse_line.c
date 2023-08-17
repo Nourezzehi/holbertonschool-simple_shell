@@ -20,9 +20,9 @@ char **parse_the_line(char *input)
 	while (token)
 	{
 		tokens[i] = token;
-    	i++;
-    	token = strtok(NULL, LSH_TOK_DELIM);
-  	}
+		i++;
+		token = strtok(NULL, LSH_TOK_DELIM);
+	}
 	tokens[i] = NULL;
 	return (tokens);
 }

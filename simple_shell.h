@@ -1,5 +1,5 @@
 #ifndef HEADER_H
-#define HEADER_h
+#define HEADER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,6 +12,6 @@
 
 char *read_line(void);
 char **parse_the_line(char *);
-int execute_line(char **);
+void execute_line(char **);
 
 #endif

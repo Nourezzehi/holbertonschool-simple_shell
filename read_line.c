@@ -1,6 +1,9 @@
 #include "simple_shell.h"
 
-
+/**
+ * read_line - get a line from stdin
+ * Return: readen line
+*/
 char *read_line(void)
 {
 	char *input = NULL;
