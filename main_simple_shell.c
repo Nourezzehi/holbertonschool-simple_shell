@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 {
 	unsigned int count = 1;
 	char *readline = NULL, **tokens;
-	pid_t pid;
 
 	while (1)
 	{
