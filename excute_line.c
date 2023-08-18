@@ -12,7 +12,7 @@ void execute_line(char **tokens)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execvp(tokens[0], tokens) == -1)
+		if (execve(tokens[0], tokens, NULL) == -1)
 		{
 			fprintf(stdin, "%s: command not found", tokens[0]);
 			exit(EXIT_FAILURE);
