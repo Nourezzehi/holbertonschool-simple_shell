@@ -29,8 +29,6 @@ char *check_path(char *command)
 	char *final_path = (char *) malloc(1024 * sizeof(char));
 	struct stat info;
 
-	if (!command)
-		return (NULL);
 	if (stat(command, &info) == 0)
 	{
 		free(path);
@@ -56,12 +54,9 @@ char *check_path(char *command)
 			free(path);
 			return (final_path);
 		}
-		else
-			path[0] = 0;
 		i++;
 	}
 	free(path);
-	free(final_path);
 
 	return (final_path);
 }

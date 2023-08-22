@@ -25,12 +25,12 @@ int main(int argc, char **argv)
 			continue;
 		}
 		tokens = parse_the_line(readline, TOK_DELIM);
-		path = check_path(*tokens);
-		if (path == NULL)
+		if (*tokens == NULL)
 		{
 			free_d_p(tokens);
 			continue;
 		}
+		path = check_path(*tokens);
 		execute_line(tokens, path);
 		free(path);
 		free_d_p(tokens);
