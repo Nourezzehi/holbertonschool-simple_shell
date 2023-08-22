@@ -14,7 +14,6 @@ void execute_line(char **tokens, char *path)
 	if (pid == 0)
 	{
 		status = execve(path, tokens, environ);
-		exit(EXIT_FAILURE);
 	}
 	else if (pid > 0)
 	{
