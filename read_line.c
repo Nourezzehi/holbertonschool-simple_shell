@@ -15,7 +15,6 @@ char *read_line(void)
 	if (input_len == -1)
 	{
 			free(input);
-			perror("geline error");
 			exit(EXIT_FAILURE);
 	}
 	else if (feof(stdin))
