@@ -14,7 +14,6 @@ void execute_line(char **tokens, char *path)
 	if (pid == 0)
 	{
 		status = execve(path, tokens, environ);
-		perror("execution error");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid > 0)
@@ -26,7 +25,6 @@ void execute_line(char **tokens, char *path)
 	else if (pid < 0)
 	{
 		free_d_p(tokens);
-		perror("fork error");
 		exit(EXIT_FAILURE);
 	}
 }
