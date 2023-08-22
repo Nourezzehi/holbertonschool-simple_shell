@@ -7,18 +7,34 @@
  * Return: 0
 */
 
-int main(int __attribute__ ((unused)) argc, __attribute__ ((unused)) char **argv)
+int main(int argc, char **argv)
 {
-	unsigned int count = 1;
-	char *readline = NULL, **tokens;
+	char *readline, **tokens, *path = NULL;
+	(void) argc;
+	(void) argv;
 
 	while (1)
 	{
-		printf("($) ");
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 		readline = read_line();
-		tokens = parse_the_line(readline);
-		execute_line(tokens);
-		count++;
+		if (strcmp("env\n", readline) == 0)
+		{
+			free(readline);
+			_env();
+			continue;
+		}
+		tokens = parse_the_line(readline, TOK_DELIM);
+		path = check_path(*tokens);
+		if (path == NULL)
+		{
+			free_d_p(tokens);
+			continue;
+		}
+		execute_line(tokens, path);
+		free(path);
+		free_d_p(tokens);
 	}
+
 	return (0);
 }

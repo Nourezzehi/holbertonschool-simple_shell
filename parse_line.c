@@ -2,27 +2,24 @@
 
 /**
  *parse_the_line-parses the line.
- * @input:Buffer
+ * @readline: the input
  * Return: vector of words.
  */
 
-char **parse_the_line(char *input)
+char **parse_the_line(char *readline, const char *seperator)
 {
-	unsigned int i = 0;
-	char **tokens = (char **) malloc(1024), *token = NULL;
+	int i = 0, size = SIZE;
+	char **tokens = (char **) malloc(size * sizeof(char *)), *token = NULL;
 
-	if (!tokens)
+	token = strtok(readline, seperator);
+	while (token != NULL)
 	{
-		fprintf(stderr, "lsh: allocation error\n");
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(input, LSH_TOK_DELIM);
-	while (token)
-	{
-		tokens[i] = token;
+		tokens[i] = strdup(token);
 		i++;
-		token = strtok(NULL, LSH_TOK_DELIM);
+		token = strtok(NULL, seperator);
 	}
 	tokens[i] = NULL;
+	free(readline);
+
 	return (tokens);
 }

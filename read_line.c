@@ -4,27 +4,30 @@
  * read_line - get a line from stdin
  * Return: readen line
 */
+
 char *read_line(void)
 {
 	char *input = NULL;
 	size_t bufsize = 0;
+	ssize_t input_len;
 
-	if (getline(&input, &bufsize, stdin) == -1)
+	input_len = getline(&input, &bufsize, stdin);
+	if (input_len == -1)
 	{
-		if (feof(stdin))
-			exit(EXIT_SUCCESS);
-		else if (!input)
-			fprintf(stderr, "lsh: allocation error\n");
-		else
-		{
-			perror("error in getting the line");
+			free(input);
+			perror("geline error");
 			exit(EXIT_FAILURE);
-		}
 	}
-	else if (strcmp(input, "exit\n") == 0)
+	else if (feof(stdin))
 	{
 		free(input);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
+	if (strcmp(input, "exit\n") == 0)
+	{
+		free(input);
+		exit(EXIT_SUCCESS);
+	}
+
 	return (input);
 }

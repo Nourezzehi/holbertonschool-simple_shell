@@ -5,21 +5,28 @@
  * @tokens: the vector with the whole input
  */
 
-void execute_line(char **tokens)
+void execute_line(char **tokens, char *path)
 {
+	int status;
 	pid_t pid;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(tokens[0], tokens, NULL) == -1)
-		{
-			fprintf(stdin, "%s: command not found", tokens[0]);
-			exit(EXIT_FAILURE);
-		}
+		status = execve(path, tokens, environ);
+		perror("execution error");
+		exit(EXIT_FAILURE);
 	}
 	else if (pid > 0)
-		waitpid(pid, NULL, 0);
-	else
-		perror("fork");
+	{
+		wait(&status);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
+	}
+	else if (pid < 0)
+	{
+		free_d_p(tokens);
+		perror("fork error");
+		exit(EXIT_FAILURE);
+	}
 }

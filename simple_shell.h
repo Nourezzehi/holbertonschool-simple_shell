@@ -7,11 +7,19 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
-#define LSH_TOK_DELIM " \t\r\n\a"
+#define TOK_DELIM " \t\r\n\a"
+#define SIZE 64
+
+extern char **environ;
 
 char *read_line(void);
-char **parse_the_line(char *);
-void execute_line(char **);
+char **parse_the_line(char *, const char *);
+void execute_line(char **, char *);
+void _env(void);
+char *check_path(char *);
+void free_d_p(char **);
 
 #endif
