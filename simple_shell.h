@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define TOK_DELIM " \t\r\n\a"
+#define TOK_DELIM " \t\n"
 #define SIZE 64
 
 extern char **environ;

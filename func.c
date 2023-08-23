@@ -26,15 +26,15 @@ char *check_path(char *command)
 	char *array[1000], *path = strdup(getenv("PATH"));
 	char *path_token = strtok(path, ":");
 	int i = 0;
-	char *final_path = (char *) malloc(1024 * sizeof(char));
+	char *final_path;
 	struct stat info;
 
 	if (stat(command, &info) == 0)
 	{
-		free(path);
-		free(final_path);
-		return (command);
+		strcpy(path, command);
+		return (path);
 	}
+	final_path = (char *) malloc(1024 * sizeof(char));
 	while (path_token != NULL)
 	{
 		array[i] = path_token;

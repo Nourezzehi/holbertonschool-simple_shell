@@ -20,12 +20,12 @@ char *read_line(void)
 	else if (feof(stdin))
 	{
 		free(input);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 	if (strcmp(input, "exit\n") == 0)
 	{
 		free(input);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 
 	return (input);
