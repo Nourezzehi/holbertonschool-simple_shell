@@ -3,6 +3,7 @@
 /**
  *parse_the_line-parses the line.
  * @readline: the input
+ * @seperator: the seperating string
  * Return: vector of words.
  */
 

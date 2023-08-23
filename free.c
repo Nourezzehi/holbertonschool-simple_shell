@@ -7,9 +7,9 @@
 
 void free_d_p(char **p)
 {
-    int i;
+	int i;
 
-    for (i = 0; p[i] != NULL; i++)
-        free(p[i]);
-    free(p);
+	for (i = 0; p[i] != NULL; i++)
+		free(p[i]);
+	free(p);
 }

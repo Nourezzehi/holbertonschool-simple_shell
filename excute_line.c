@@ -3,6 +3,7 @@
 /**
  * execute_line - the function to use execve while executing the line
  * @tokens: the vector with the whole input
+ * @path: the command's full path
  */
 
 void execute_line(char **tokens, char *path)
@@ -24,6 +25,6 @@ void execute_line(char **tokens, char *path)
 	else if (pid < 0)
 	{
 		free_d_p(tokens);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 }

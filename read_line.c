@@ -14,8 +14,8 @@ char *read_line(void)
 	input_len = getline(&input, &bufsize, stdin);
 	if (input_len == -1)
 	{
-			free(input);
-			exit(EXIT_FAILURE);
+		free(input);
+		exit(EXIT_FAILURE);
 	}
 	else if (feof(stdin))
 	{

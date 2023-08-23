@@ -56,7 +56,8 @@ char *check_path(char *command)
 		}
 		i++;
 	}
+	free(final_path);
 	free(path);
 
-	return (final_path);
+	return (NULL);
 }
