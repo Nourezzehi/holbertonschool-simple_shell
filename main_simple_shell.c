@@ -31,8 +31,11 @@ int main(int argc, char **argv)
 			continue;
 		}
 		path = check_path(*tokens);
-		execute_line(tokens, path);
-		free(path);
+		if (path != NULL)
+		{
+			execute_line(tokens, path);
+			free(path);
+		}
 		free_d_p(tokens);
 	}
 
