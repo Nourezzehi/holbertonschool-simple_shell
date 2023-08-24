@@ -1,0 +1,58 @@
+.TH man 1 "Holberton Simple Shell Project"
+
+.SH NAME
+    hsh - Simple Shell: command line interpreter
+
+.SH SYNOPSIS
+hsh [filename]
+
+.SH DESCRIPTION
+.B hsh
+is a basic imitation of a command line interpreter that reads and implements basic commands from user input as a shell would.
+.PP
+.B hsh
+ is compiled with gcc (C90). It is built to run in both interactive and non interactive mode.
+.PP
+.SH USER INPUT
+Once a user inputs a command and hits enter, the shell performs the following actions:
+
+1. Splits the command into an array of words.
+
+2. Looks for the command.
+
+3. Executes the command.
+.PP
+.SH SEARCH FOR COMMAND
+When locating a command, the shell looks for a built-in command by that name.
+If a built-in command is not found, the shell searches for the command in the PATH.
+.PP
+.SH EXECUTE COMMAND
+Commands are executed in a child process of the main process.
+.PP
+.SH BUILTINS
+.IP exit
+Exits process and frees memory allocated.
+
+.SH EXAMPLES
+Below an example of interactive mode:
+
+.RS +4
+$ ./hsh
+.RE
+.RS +4
+($) /bin/ls
+.RE
+.RS +4
+hsh main.c shell.c
+.RE
+.RS +4
+($)
+.RE
+.RS +4
+($) exit
+.RE
+.RS +4
+$
+
+Author
+    This custom _printf functions was implemented by [Ezzehi Nour] 
