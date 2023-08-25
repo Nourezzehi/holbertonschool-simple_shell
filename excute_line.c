@@ -6,25 +6,21 @@
  * @path: the command's full path
  */
 
-void execute_line(char **tokens, char *path)
+int execute_line(char **tokens, char *path)
 {
-	int status;
+	int status = 0;
 	pid_t pid;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		status = execve(path, tokens, environ);
+		execve(path, tokens, environ);
 	}
-	else if (pid > 0)
+	else
 	{
-		wait(NULL);
+		wait(&status);
 		if (WIFEXITED(status))
 			status = WEXITSTATUS(status);
 	}
-	else if (pid < 0)
-	{
-		free_d_p(tokens);
-		exit(-1);
-	}
+	return (status);
 }

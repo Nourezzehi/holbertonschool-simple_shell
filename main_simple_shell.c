@@ -10,6 +10,7 @@
 int main(int argc, char **argv)
 {
 	char *readline, **tokens, *path = NULL;
+	int status;
 	(void) argc;
 	(void) argv;
 
@@ -33,11 +34,11 @@ int main(int argc, char **argv)
 		path = check_path(*tokens);
 		if (path != NULL)
 		{
-			execute_line(tokens, path);
+			status = execute_line(tokens, path);
 			free(path);
 		}
 		free_d_p(tokens);
 	}
 
-	return (0);
+	return (status);
 }

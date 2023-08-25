@@ -17,7 +17,7 @@ extern char **environ;
 
 char *read_line(void);
 char **parse_the_line(char *, const char *);
-void execute_line(char **, char *);
+int execute_line(char **, char *);
 void _env(void);
 char *check_path(char *);
 void free_d_p(char **);
