@@ -18,13 +18,13 @@ void execute_line(char **tokens, char *path)
 	}
 	else if (pid > 0)
 	{
-		wait(&status);
+		wait(NULL);
 		if (WIFEXITED(status))
 			status = WEXITSTATUS(status);
 	}
 	else if (pid < 0)
 	{
 		free_d_p(tokens);
-		exit(0);
+		exit(-1);
 	}
 }
