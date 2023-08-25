@@ -10,7 +10,6 @@
 int main(int argc, char **argv)
 {
 	char *readline, **tokens, *path = NULL;
-	int status;
 	(void) argc;
 	(void) argv;
 
