@@ -40,5 +40,5 @@ int main(int argc, char **argv)
 		free_d_p(tokens);
 	}
 
-	return (status);
+	return (1);
 }
