@@ -41,6 +41,6 @@ int main(int argc, char **argv)
 	}
 	status = 1;
 
-	return (1);
+	return (0);
 	return (status);
 }
