@@ -6,11 +6,12 @@
 
 void _env(void)
 {
+	char *s = environ[0];
 	int i = 0;
 
-	while (environ[i] != NULL)
+	while (s != NULL)
 	{
 		printf("%s\n", environ[i]);
-		i++;
+		s = environ[++i];
 	}
 }
