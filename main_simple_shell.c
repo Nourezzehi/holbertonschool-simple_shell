@@ -33,6 +33,13 @@ int main(void)
 			continue;
 		}
 		path = check_path(*tokens);
+		if (path == NULL)
+		{
+			perror("command not found");
+			free(path);
+			free_d_p(tokens);
+			return (3);
+		}
 		if (path != NULL)
 		{
 			status = execute_line(tokens, path);
@@ -40,8 +47,6 @@ int main(void)
 		}
 		free_d_p(tokens);
 	}
-	status = 1;
 
-	return (0);
 	return (status);
 }
