@@ -23,11 +23,6 @@ char *read_line(void)
 			exit(1);
 		}
 	}
-	if (strcmp(input, "exit\n") == 0)
-	{
-		free(input);
-		exit(2);
-	}
 
 	return (input);
 }

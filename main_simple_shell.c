@@ -2,17 +2,13 @@
 
 /**
  * main - our shell
- * @argc: num of arguments
- * @argv: vector of arguments
  * Return: 0
 */
 
-int main(int argc, char **argv)
+int main(void)
 {
 	char *readline, **tokens, *path = NULL;
 	int status;
-	(void) argc;
-	(void) argv;
 
 	while (1)
 	{
@@ -24,6 +20,11 @@ int main(int argc, char **argv)
 			free(readline);
 			_env();
 			continue;
+		}
+		if (strcmp(readline, "exit\n") == 0)
+		{
+			free(readline);
+			break;
 		}
 		tokens = parse_the_line(readline, TOK_DELIM);
 		if (*tokens == NULL)
