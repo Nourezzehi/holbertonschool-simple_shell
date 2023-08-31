@@ -22,7 +22,7 @@ int execute_line(char **tokens, char *path)
 	{
 		execve(path, tokens, environ);
 		perror("execve failed");
-		exit(1);
+		exit(2);
 	}
 	else
 	{
