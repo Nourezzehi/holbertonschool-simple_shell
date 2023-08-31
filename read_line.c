@@ -26,7 +26,7 @@ char *read_line(void)
 	if (strcmp(input, "exit\n") == 0)
 	{
 		free(input);
-		exit(0);
+		exit(2);
 	}
 
 	return (input);
