@@ -15,12 +15,13 @@ char *read_line(void)
 	if (input_len == -1)
 	{
 		free(input);
-		exit(EXIT_FAILURE);
-	}
-	else if (feof(stdin))
-	{
-		free(input);
-		exit(0);
+		if (feof(stdin))
+			exit(0);
+		else
+		{
+			perror("getline failed");
+			exit(1);
+		}
 	}
 	if (strcmp(input, "exit\n") == 0)
 	{
